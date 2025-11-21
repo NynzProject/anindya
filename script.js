@@ -1,4 +1,3 @@
-// Mobile Navigation
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const header = document.getElementById('header');
@@ -8,7 +7,6 @@ hamburger.addEventListener('click', () => {
     header.classList.toggle('menu-open');
 });
 
-// Close mobile menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -16,12 +14,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Sticky Header
 window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Back to Top Button
 const backToTopBtn = document.querySelector('.back-to-top');
 
 window.addEventListener('scroll', () => {
@@ -32,7 +28,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -40,7 +35,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
         
-        // Close mobile menu if open
         navLinks.classList.remove('active');
         header.classList.remove('menu-open');
         
@@ -51,7 +45,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animation on Scroll
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.hero-text, .hero-image, .about-image, .about-text, .portfolio-item, .gallery-item');
     
@@ -66,22 +59,19 @@ const animateOnScroll = () => {
     });
 };
 
-// Set initial state for animation
 document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.hero-text, .hero-image, .about-image, .about-text, .portfolio-item, .gallery-item');
     
     elements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)'; // Lebih kecil agar terasa cepat
-        element.style.transition = 'opacity 0.3s ease, transform 0.3s ease'; // Durasi lebih cepat
-        element.style.transitionDelay = `${index * 0.05}s`; // Delay antar elemen lebih cepat
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        element.style.transitionDelay = `${index * 0.05}s`;
     });
     
-    // Trigger animation setelah sedikit delay
     setTimeout(animateOnScroll, 50);
 });
 
-// Sesuaikan padding top hero section berdasarkan tinggi header
 function adjustHeroPadding() {
     if (window.innerWidth <= 768) {
         const header = document.getElementById('header');
@@ -92,9 +82,6 @@ function adjustHeroPadding() {
     }
 }
 
-// Panggil saat load dan resize
 window.addEventListener('load', adjustHeroPadding);
 window.addEventListener('resize', adjustHeroPadding);
-
-// Trigger animasi saat scroll
 window.addEventListener('scroll', animateOnScroll);
